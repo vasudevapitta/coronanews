@@ -19,24 +19,31 @@ fetch(url)
       const title = arrVal.title;
       const content = arrVal.content?arrVal.content:'null';
       const desc = arrVal.description;
+      
+      const titleSearch = title.search('corona');
+      const contentSearch = content.search('corona');
+      const descSearch = desc.search('corona');	
+      const isCorona = (titleSearch!=-1 || contentSearch!=-1 || descSearch!=-1)
+      
+       if(isCorona){
+          const date = arrVal.publishedAt?arrVal.publishedAt.slice(0,10):'';
+          const author = arrVal.author?arrVal.author:'Unknown';
 
-        const date = arrVal.publishedAt?arrVal.publishedAt.slice(0,10):'';
-        const author = arrVal.author?arrVal.author:'Unknown';
+          const readMoreUrl = arrVal.url;
+          const img = arrVal.urlToImage;
+          const source = arrVal.source.name;
 
-        const readMoreUrl = arrVal.url;
-        const img = arrVal.urlToImage;
-        const source = arrVal.source.name;
-              
-        const template = `<h2>${title}</h2>
-        <p>${date}</p>
-        <figure>
-        <img src="${img}" alt="${title}" class="img">
-        <figcaption>${desc}</figcaption>
-        </figure>
-        <p>${content} <span><a href="${readMoreUrl}" target="_blank" rel="noopener">Read more</a></span></p>
-        <h6>Author ${author}</h6>
-        <hr>`;
-       $(div).append(template);
+          const template = `<h2>${title}</h2>
+          <p>${date}</p>
+          <figure>
+          <img src="${img}" alt="${title}" class="img">
+          <figcaption>${desc}</figcaption>
+          </figure>
+          <p>${content} <span><a href="${readMoreUrl}" target="_blank" rel="noopener">Read more</a></span></p>
+          <h6>Author ${author}</h6>
+          <hr>`;
+         $(div).append(template);
+       }
     });
   }
    
