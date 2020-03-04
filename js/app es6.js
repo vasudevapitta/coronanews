@@ -3,7 +3,7 @@ $(()=>{
 const API_KEY = '4b64ca4f39cb4f52a5ff2843d6f01541';
 const div = $('#doc');
 const country='us';
-const url=`https://newsapi.org/v2/everything?q=corona&sortBy=publishedAt&apiKey=${API_KEY}`;
+const url=`https://newsapi.org/v2/everything?q=corona&sortBy=publishedAt&language=en&apiKey=${API_KEY}`;
   
 
 fetch(url)
