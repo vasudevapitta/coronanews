@@ -1,0 +1,36 @@
+nav h1 {
+  font-size: 35px;
+  line-height: 0.25px;
+}
+nav {
+  background-color: #000;
+  height: 50px;
+  padding: 20px;
+  color: #fff;
+}
+.img {
+  margin: auto;
+  width: 50%;
+}
+
+html {
+  font-family: roboto;
+  text-align: center;
+}
+
+/* .thumbnail {
+  width: 60px;
+  position: relative;
+  transform: translateY(-58px);
+  padding: 25px;
+} */
+
+@media only screen and (max-width: 800px){
+  .img {
+    width: 100%;
+  }
+
+  nav h1 {
+    font-size: 25px;
+  }
+}
