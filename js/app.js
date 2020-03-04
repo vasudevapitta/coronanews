@@ -4,7 +4,7 @@ $(function () {
   var API_KEY = '4b64ca4f39cb4f52a5ff2843d6f01541';
   var div = $('#doc');
   var country = 'us';
-  var url = "https://newsapi.org/v2/everything?q=corona&sortBy=popularity&apiKey=".concat(API_KEY);
+  var url = "https://newsapi.org/v2/everything?q=corona&sortBy=publishedAt&apiKey=".concat(API_KEY);
 
 $.ajax({
   dataType: "json",
