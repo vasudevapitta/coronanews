@@ -3,7 +3,8 @@ $(()=>{
 const API_KEY = '4b64ca4f39cb4f52a5ff2843d6f01541';
 const div = $('#doc');
 const country='us';
-const url=`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${API_KEY}`;
+const url=`https://newsapi.org/v2/everything?q=corona&sortBy=popularity&apiKey=${API_KEY}`;
+  
 
 fetch(url)
   .then(response => response.json())
@@ -16,15 +17,9 @@ fetch(url)
   function createTemplate(data) {
     $(data).each(function(ind, arrVal) {
       const title = arrVal.title;
-      const titleSearch = title.search('corona');
       const content = arrVal.content?arrVal.content:'null';
-      const contentSearch = content.search('corona');
       const desc = arrVal.description;
-      const descSearch = desc.search('corona');
-      const isCorona = (titleSearch!=-1 || contentSearch!=-1 || descSearch!=-1)
-      
-      if(isCorona){
-        console.log('corona news found');
+
         const date = arrVal.publishedAt?arrVal.publishedAt.slice(0,10):'';
         const author = arrVal.author?arrVal.author:'Unknown';
 
@@ -42,7 +37,6 @@ fetch(url)
         <h6>Author ${author}</h6>
         <hr>`;
        $(div).append(template);
-      }
     });
   }
    
