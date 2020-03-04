@@ -1,4 +1,7 @@
-nav h1 {
+body {
+  margin: 0;
+}
+  nav h1 {
   font-size: 35px;
   line-height: 0.25px;
 }
@@ -12,9 +15,8 @@ nav {
   margin: auto;
   width: 50%;
 }
-
 html {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
