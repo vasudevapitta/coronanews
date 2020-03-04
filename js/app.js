@@ -4,9 +4,7 @@ $(function () {
   var API_KEY = '4b64ca4f39cb4f52a5ff2843d6f01541';
   var div = $('#doc');
   var country = 'us';
-  var url = "https://newsapi.org/v2/top-headlines?country=".concat(country, "&apiKey=").concat(API_KEY);
-
-
+  var url = "https://newsapi.org/v2/everything?q=corona&sortBy=popularity&apiKey=".concat(API_KEY);
 
 $.ajax({
   dataType: "json",
@@ -21,15 +19,9 @@ $.ajax({
   function createTemplate(data) {
     $(data).each(function (ind, arrVal) {
       var title = arrVal.title;
-      var titleSearch = title.search('corona');
       var content = arrVal.content ? arrVal.content : 'null';
-      var contentSearch = content.search('corona');
       var desc = arrVal.description;
-      var descSearch = desc.search('corona');
-      var isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
-
-      if (isCorona) {
-        console.log('corona news found');
+      
         var date = arrVal.publishedAt ? arrVal.publishedAt.slice(0, 10) : '';
         var author = arrVal.author ? arrVal.author : 'Unknown';
         var readMoreUrl = arrVal.url;
@@ -37,7 +29,6 @@ $.ajax({
         var source = arrVal.source.name;
         var template = "<h2>".concat(title, "</h2>\n <p>").concat(date, "</p>\n <figure>\n <img src=\"").concat(img, "\" alt=\"").concat(title, "\" class=\"img\">\n <figcaption>").concat(desc, "</figcaption>\n </figure>\n  <p>").concat(content, " <span><a href=\"").concat(readMoreUrl, "\" target=\"_blank\" rel=\"noopener\">Read more</a></span></p>\n  <h6>Author ").concat(author, "</h6>\n <hr>");
         $(div).append(template);
-      }
     });
   }
 });
