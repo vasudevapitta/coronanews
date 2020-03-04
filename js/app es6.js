@@ -38,7 +38,7 @@ fetch(url)
         <img src="${img}" alt="${title}" class="img">
         <figcaption>${desc}</figcaption>
         </figure>
-        <p>${content} <span><a href="${readMoreUrl}">Read more</a></span></p>
+        <p>${content} <span><a href="${readMoreUrl}" target="_blank" rel="noopener">Read more</a></span></p>
         <h6>Author ${author}</h6>
         <hr>`;
        $(div).append(template);
