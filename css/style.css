@@ -63,4 +63,8 @@ small a {
   footer {
     height: 70px;
   }
+
+  button {
+    margin-top: 20px;
+  }
 }
