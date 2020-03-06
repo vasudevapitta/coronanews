@@ -16,13 +16,13 @@ fetch(url)
   
   function createTemplate(data) {
     $(data).each(function(ind, arrVal) {
-      const title = arrVal.title?arrVal.title:null;
-      const content = arrVal.content?arrVal.content:null;
-      const desc = arrVal.description?arrVal.description:null;
+      const title = arrVal.title?arrVal.title:'';
+      const content = arrVal.content?arrVal.content:'';
+      const desc = arrVal.description?arrVal.description:'';
       
-      const titleSearch = title?title.search('corona'):null;
-      const contentSearch = content?content.search('corona'):null;
-      const descSearch = desc?desc.search('corona'):null; 
+      const titleSearch = title?title.search('corona'):-1;
+      const contentSearch = content?content.search('corona'):-1;
+      const descSearch = desc?desc.search('corona'):-1; 
       const isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
       
        if(isCorona){
@@ -40,7 +40,7 @@ fetch(url)
           <figcaption>${desc}</figcaption>
           </figure>
           <p>${content} <span><a href="${readMoreUrl}" target="_blank" rel="noopener">Read more</a></span></p>
-          <h6>Author ${author}</h6>
+          <h6>Author- ${author}</h6>
           <hr>`;
          $(div).append(template);
        }

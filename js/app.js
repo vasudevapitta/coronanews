@@ -18,13 +18,13 @@ $.ajax({
 
   function createTemplate(data) {
     $(data).each(function (ind, arrVal) {
-      var title = arrVal.title?arrVal.title:null;
-      var content = arrVal.content?arrVal.content:null;
-      var desc = arrVal.description?arrVal.description:null;
+      var title = arrVal.title?arrVal.title:'';
+      var content = arrVal.content?arrVal.content:'';
+      var desc = arrVal.description?arrVal.description:'';
       
-      var titleSearch = title?title.search('corona'):null;
-      var contentSearch = content?content.search('corona'):null;
-      var descSearch = desc?desc.search('corona'):null;	
+      var titleSearch = title?title.search('corona'):-1;
+      var contentSearch = content?content.search('corona'):-1;
+      var descSearch = desc?desc.search('corona'):-1;	
       var isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
       
       if (isCorona) {
@@ -33,7 +33,7 @@ $.ajax({
         var readMoreUrl = arrVal.url;
         var img = arrVal.urlToImage;
         var source = arrVal.source.name;
-        var template = "<h2>".concat(title, "</h2>\n <p>").concat(date, "</p>\n <figure>\n <img src=\"").concat(img, "\" alt=\"").concat(title, "\" class=\"img\">\n <figcaption>").concat(desc, "</figcaption>\n </figure>\n  <p>").concat(content, " <span><a href=\"").concat(readMoreUrl, "\" target=\"_blank\" rel=\"noopener\">Read more</a></span></p>\n  <h6>Author ").concat(author, "</h6>\n <hr>");
+        var template = "<h2>".concat(title, "</h2>\n <p>").concat(date, "</p>\n <figure>\n <img src=\"").concat(img, "\" alt=\"").concat(title, "\" class=\"img\">\n <figcaption>").concat(desc, "</figcaption>\n </figure>\n  <p>").concat(content, " <span><a href=\"").concat(readMoreUrl, "\" target=\"_blank\" rel=\"noopener\">Read more</a></span></p>\n  <h6>Author -").concat(author, "</h6>\n <hr>");
         $(div).append(template);
       }
     });
