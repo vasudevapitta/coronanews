@@ -18,13 +18,13 @@ $.ajax({
 
   function createTemplate(data) {
     $(data).each(function (ind, arrVal) {
-      var title = arrVal.title;
-      var content = arrVal.content ? arrVal.content : 'null';
-      var desc = arrVal.description;
+      var title = arrVal.title?arrVal.title:null;
+      var content = arrVal.content?arrVal.content:null;
+      var desc = arrVal.description?arrVal.description:null;
       
-      var titleSearch = title.search('corona');
-      var contentSearch = content.search('corona');
-      var descSearch = desc.search('corona');	
+      var titleSearch = title?title.search('corona'):null;
+      var contentSearch = content?content.search('corona'):null;
+      var descSearch = desc?desc.search('corona'):null;	
       var isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
       
       if (isCorona) {

@@ -16,14 +16,14 @@ fetch(url)
   
   function createTemplate(data) {
     $(data).each(function(ind, arrVal) {
-      const title = arrVal.title;
-      const content = arrVal.content?arrVal.content:'null';
-      const desc = arrVal.description;
+      const title = arrVal.title?arrVal.title:null;
+      const content = arrVal.content?arrVal.content:null;
+      const desc = arrVal.description?arrVal.description:null;
       
-      const titleSearch = title.search('corona');
-      const contentSearch = content.search('corona');
-      const descSearch = desc.search('corona');	
-      const isCorona = (titleSearch!=-1 || contentSearch!=-1 || descSearch!=-1)
+      const titleSearch = title?title.search('corona'):null;
+      const contentSearch = content?content.search('corona'):null;
+      const descSearch = desc?desc.search('corona'):null; 
+      const isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
       
        if(isCorona){
           const date = arrVal.publishedAt?arrVal.publishedAt.slice(0,10):'';
