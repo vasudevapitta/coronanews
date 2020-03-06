@@ -4,7 +4,7 @@ const API_KEY = '4b64ca4f39cb4f52a5ff2843d6f01541';
 const div = $('#doc');
 const country='us';
 const url=`https://newsapi.org/v2/everything?q=corona&sortBy=publishedAt&language=en&apiKey=${API_KEY}`;
-  
+var templateStr = '';
 
 fetch(url)
   .then(response => response.json())
@@ -13,38 +13,39 @@ fetch(url)
           createTemplate(arrVal.articles);
         });
 });
+   
+  function createTitle(arrVal){
+	  templateStr += arrVal.title?`<h2>${arrVal.title}</h2>`:'';
+  }
+  
+  function createDate(arrVal){
+	  templateStr += arrVal.publishedAt?`<p>${arrVal.publishedAt.slice(0,10)}</p>`:'';
+  }
+  
+  function createFig(arrVal){
+	  templateStr += arrVal.urlToImage?`<figure>
+      <img src="${arrVal.urlToImage}" alt="${arrVal.title}" class="img">
+      <figcaption>${arrVal.description}</figcaption>
+      </figure>`:'';
+  }
+  
+  function createContent(arrVal){
+	  templateStr += arrVal.content?`<p>${arrVal.content} <span><a href="${arrVal.url}" target="_blank" rel="noopener">Read more</a></span></p>`:'';
+  }
+  
+  function createAuthor(arrVal){
+	  templateStr += arrVal.author?`<h6>Author- ${arrVal.author}</h6>`:'';
+  }
   
   function createTemplate(data) {
-    $(data).each(function(ind, arrVal) {
-      const title = arrVal.title?arrVal.title:'';
-      const content = arrVal.content?arrVal.content:'';
-      const desc = arrVal.description?arrVal.description:'';
-      
-      const titleSearch = title?title.search('corona'):-1;
-      const contentSearch = content?content.search('corona'):-1;
-      const descSearch = desc?desc.search('corona'):-1; 
-      const isCorona = titleSearch != -1 || contentSearch != -1 || descSearch != -1;
-      
-       if(isCorona){
-          const date = arrVal.publishedAt?arrVal.publishedAt.slice(0,10):'';
-          const author = arrVal.author?arrVal.author:'Unknown';
-
-          const readMoreUrl = arrVal.url;
-          const img = arrVal.urlToImage;
-          const source = arrVal.source.name;
-
-          const template = `<h2>${title}</h2>
-          <p>${date}</p>
-          <figure>
-          <img src="${img}" alt="${title}" class="img">
-          <figcaption>${desc}</figcaption>
-          </figure>
-          <p>${content} <span><a href="${readMoreUrl}" target="_blank" rel="noopener">Read more</a></span></p>
-          <h6>Author- ${author}</h6>
-          <hr>`;
-         $(div).append(template);
-       }
-    });
+	    $(data).each(function(ind, arrVal) {
+		    createTitle(arrVal);
+		    createDate(arrVal);
+		    createFig(arrVal);
+			createContent(arrVal);
+			createAuthor(arrVal);
+	    });
+	    $(div).html(templateStr);
   }
    
 });
