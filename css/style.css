@@ -56,7 +56,6 @@ small a {
   }
 
   header h1 {
-    font-size: 20px;
     margin-top: 25px;
   }
 
@@ -66,5 +65,11 @@ small a {
 
   button {
     margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 415px){
+  header h1 {
+    font-size: 20px;
   }
 }
