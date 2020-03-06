@@ -1,11 +1,11 @@
 body {
   margin: 0;
 }
-  nav h1 {
+  header h1 {
   font-size: 35px;
   line-height: 0.25px;
 }
-nav {
+header {
   background-color: #000;
   height: 50px;
   padding: 20px;
@@ -19,6 +19,30 @@ html {
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
+footer {
+  background-color: black;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  color: #ffffff;
+}
+#donate {
+  padding: 15px;
+  color: #000000;
+  text-decoration: none;
+}
+button {
+  font-size: 15px;
+  padding: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+small a {
+  color: #ffffff;
+}
+
 /* .thumbnail {
   width: 60px;
   position: relative;
@@ -31,7 +55,7 @@ html {
     width: 100%;
   }
 
-  nav h1 {
+  header h1 {
     font-size: 25px;
   }
 }
