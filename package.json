@@ -1,0 +1,29 @@
+{
+  "name": "coronausa",
+  "version": "1.0.0",
+  "description": "single page application which provides live news on corona virus",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run browser-sync && npm run sass",
+    "browser-sync": "browser-sync start --server --files src/*.css",
+    "sass": "node-sass --watch src/css -o css --source-map true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasudevapitta/coronausa.git"
+  },
+  "keywords": [
+    "corona",
+    "virus",
+    "news"
+  ],
+  "author": "Vasudeva Pitta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasudevapitta/coronausa/issues"
+  },
+  "homepage": "https://github.com/vasudevapitta/coronausa#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
